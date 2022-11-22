@@ -1,0 +1,10 @@
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\bin\Debug\unit_2.exe.config
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\bin\Debug\unit_2.exe
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\bin\Debug\unit_2.pdb
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.csproj.AssemblyReference.cache
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.Form1.resources
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.Properties.Resources.resources
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.csproj.GenerateResource.cache
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.csproj.CoreCompileInputs.cache
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.exe
+C:\Users\12602\Desktop\ASD 2\code stuff\unit_2\obj\Debug\unit_2.pdb
