@@ -12,6 +12,7 @@ using System.Diagnostics;
 
 namespace unit_2
 {
+    //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
     public partial class Form1 : Form
     {
         public Form1()
@@ -33,7 +34,7 @@ namespace unit_2
 
                 connection.Open();
                 //if we reach this point, then it opened succesfully, 
-                lblMessages.Text = "Connection was successful";
+                lblMessages.Text = "Connection was successful. Logged in as "+Login.username;
                 //always good practice to close anything that conencts our of the program itself
                 connection.Close();
             }//end of try
@@ -84,6 +85,54 @@ namespace unit_2
             lblMessages.Text = "Names have been loaded.";
         }//end of get names click
 
-        
+        private void btnView_Click(object sender, EventArgs e)
+        {
+            string selectTable = "";
+            //check which table is selected
+            if (radCust.Checked)
+            {
+                selectTable = "Customers";
+            }
+            else if (radEmp.Checked)
+            {
+                selectTable = "Employees";
+            }
+            else if (radOrders.Checked)
+            {
+                selectTable = "Orders";
+            }
+            dataGridView1.DataSource = null;
+            //now we will try to fill out that data source based on a selected table
+            try {
+                string user = Login.username;
+                string pass = Login.pass;
+                SqlCommand command = new SqlCommand();
+                SqlConnection connection = new SqlConnection(
+               @"Data Source=(local)\SQLEXPRESS;Initial Catalog=Northwind;Persist Security Info=True;User ID="
+                + user + ";Password=" + pass);
+                connection.Open();
+                //if we reached here, then things are working smoothly
+                lblMessages.Text = "Retrieving Records...";
+                command.Connection = connection;
+                command.CommandText = "select * from " + selectTable;
+                SqlDataAdapter da = new SqlDataAdapter(command);
+                DataTable dt = new DataTable();
+                da.Fill(dt);
+
+                //fill out the view
+                dataGridView1.DataSource = dt;
+                lblMessages.Text = "Retrieval Successful! Showing table "+selectTable;
+                //close connection when done
+                connection.Close();
+
+            }
+            catch (Exception ex)
+            {
+                lblMessages.Text = "You lack permission for the "+selectTable+" table.";
+            }
+
+
+
+        }
     }//end of class form
 }
