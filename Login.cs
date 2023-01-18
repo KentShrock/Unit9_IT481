@@ -20,6 +20,7 @@ namespace unit_2
         }
         public static string username="";
         public static string pass="";
+       public int failedAttempt=0;
 
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -30,6 +31,11 @@ namespace unit_2
                 lblLoginError.Text = "Please fill in both username and password to login.";
                 lblLoginError.Visible = true;
             }//end of if bad
+            else if(txtPass.Text.Contains(" ") || txtUser.Text.Contains(" ")){//minor input validation
+                
+                lblLoginError.Text="No username or password contains a space.";
+                  lblLoginError.Visible = true;
+            }
             else
             {
                 //if we get here, we can attempt to login
@@ -56,17 +62,25 @@ namespace unit_2
                   //  lblCon.Visible = true;
                     lblCon.Text = "Connection succesful";
                     //if we are here, then we have logged in
-
+                      lblLoginError.Visible = false;
+                    failedAttempt=0;
                     //this loads the now updated form from unit 2
                     Form1 frm1 = new Form1();
                     frm1.Show();
                 }
                 catch(Exception ex)//if this activates, then something doesn't work
                 {
+                    failedAttempt++;
                     lblCon.Text = "That isn't an account we have ";
                     lblLoginError.Visible = true;
-                    lblLoginError.Text = "Error: " + ex;
+                   // lblLoginError.Text = "Error: " + ex;
+                   lblLoginError.Text="Invalid username or password\nAttempt: "+failedAttempt;
                     //txterr.Text = ex.ToString();
+                    if (failedAttempt >= 3)
+                    {
+                        btnLogin.Enabled=false;
+                        lblCon.Text="Too many failed login attempts, try again later.";
+                    }
                 }
 
             }//end of else
